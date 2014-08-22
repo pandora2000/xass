@@ -68,15 +68,7 @@ As matter of course, `namespace` can be nested as follows.
 You can use `root` class for convenience.
 
 ```sass
-// /app/assets/stylesheets/application.sass
-
-@import ./main/**/*
-```
-
-```sass
 // /app/assets/stylesheets/main/hoge/piyo/fuga.sass
-
-In sass,
 
 .root
   width: 10px
