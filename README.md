@@ -37,7 +37,7 @@ This emits the following css.
 }
 ```
 
-And,
+In view, use helpers to apply the style.
 
 ```haml
 -# /app/views/someview.html.haml
@@ -46,9 +46,13 @@ And,
   %div{ class: ns(:hogehoge) }
 ```
 
-Then, you can apply `width: 100px` to the `div` element.
+This emits
 
-As matter of course, `namespace` can be nested. The following emits same html as above one.
+```html
+<div class="hoge__piyo__fuga___hogehoge"></div>
+```
+
+As matter of course, `namespace` can be nested as follows.
 
 ```haml
 -# /app/views/someview.html.haml
@@ -72,6 +76,8 @@ You can use `root` class for convenience.
 ```sass
 // /app/assets/stylesheets/main/hoge/piyo/fuga.sass
 
+In sass,
+
 .root
   width: 10px
 
@@ -79,7 +85,7 @@ You can use `root` class for convenience.
   width: 100px
 ```
 
-This emits the following css.
+This emits
 
 ```css
 .hoge__piyo__fuga {
@@ -101,7 +107,15 @@ And,
     %div{ class: ns(:hogehoge) }
 ```
 
-You can also write this as follows abbreviately.
+This emits
+
+```html
+<div class="hoge__piyo__fuga">
+  <div class="hoge__piyo__fuga___hogehoge"></div>
+</div>
+```
+
+Abbreviately, you can write this as follows.
 
 ```haml
 -# /app/views/someview.html.haml
