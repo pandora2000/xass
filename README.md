@@ -1,6 +1,6 @@
 ##DESCRIPTION
 
-Xass extend Rails with namespacing Sass classes
+Xass extends Rails with namespacing CSS classes in Sass.
 
 ##INSTALLATION
 
