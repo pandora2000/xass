@@ -65,3 +65,5 @@ module Sass
     end
   end
 end
+
+require_relative 'xass/railtie' if defined?(Rails)

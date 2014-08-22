@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'xass'
-  s.version = '0.1.1'
+  s.version = '0.1.3'
   s.authors = ['Tetsuri Moriya']
   s.email = ['tetsuri.moriya@gmail.com']
   s.summary = 'Sass namespace extension'
@@ -10,6 +10,6 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
   s.add_development_dependency 'rspec', '~> 0'
   s.add_runtime_dependency 'activesupport', '~> 4.0'
-  s.add_runtime_dependency 'sass', '~> 0'
-  s.add_runtime_dependency 'csspool', '~> 0'
+  s.add_runtime_dependency 'sass', '>= 0'
+  s.add_runtime_dependency 'csspool', '>= 0'
 end
