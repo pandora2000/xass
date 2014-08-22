@@ -48,6 +48,17 @@ And,
 
 Then, you can apply `width: 100px` to the `div` element.
 
+As matter of course, `namespace` can be nested. The following emits same html as above one.
+
+```haml
+-# /app/views/someview.html.haml
+
+= namespace :hoge do
+  = namespace :piyo do
+    = namespace :fuga do
+      %div{ class: ns(:hogehoge) }
+```
+
 ###Example 2
 
 You can use `root` class for convenience.
