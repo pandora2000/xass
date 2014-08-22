@@ -90,7 +90,7 @@ And,
     %div{ class: ns(:hogehoge) }
 ```
 
-You can also write as follows abbreviately.
+You can also write this as follows abbreviately.
 
 ```haml
 -# /app/views/someview.html.haml
