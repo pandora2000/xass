@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'xass'
-  s.version = '0.1.3'
+  s.version = '0.1.4'
   s.authors = ['Tetsuri Moriya']
   s.email = ['tetsuri.moriya@gmail.com']
   s.summary = 'Sass namespace extension'
