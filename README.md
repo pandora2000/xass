@@ -137,3 +137,31 @@ This emits the following css.
   background-color: black;
 }
 ```
+
+###Example 4
+
+In partial, you may want to reset current namespace. `namespace!` and `namespace_with_root!` do this.
+
+```haml
+-# /app/views/someview.html.haml
+
+= namespace_with_root :hoge, :piyo, :fuga do
+  = render partial: 'partial'
+```
+
+```haml
+-# /app/views/partial.html.haml
+
+= namespace_with_root! :foo do
+  foo
+```
+
+This emits
+
+```html
+<div class="hoge__piyo__fuga">
+  <div class="foo">
+    foo
+  </div>
+</div>
+```
