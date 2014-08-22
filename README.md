@@ -101,7 +101,7 @@ You can also write as follows abbreviately.
 
 ###Example 3
 
-You can use `_` prefix for unnamespaced .
+You can use `_` prefix to disable namespacing.
 
 ```sass
 // /app/assets/stylesheets/application.sass
