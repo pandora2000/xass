@@ -18,11 +18,11 @@ module Xass
 
     def namespace_with_root(*names, tag: :div, attrs: {}, reset: false, &block)
       nss = reset ? [] : namespaces
-      content_tag(tag, namespace(*names, reset: reset, &block), attrs_with_additional_class(attrs, ns_root(nss + [names])))
+      content_tag(tag, block ? namespace(*names, reset: reset, &block) : '', attrs_with_additional_class(attrs, ns_root!(*(nss.flatten + names))))
     end
 
     def namespace_with_root!(*names, tag: :div, attrs: {}, &block)
-      namespace_with_root(*names, tag: tag, attrs: attrs, reset: true, &block)
+      namespace_with_root(*names, tag: tag, attrs: attrs, reset: true, &(block || Proc.new {}))
     end
 
     def ns_wrap(name = :wrap, _tag = nil, _attrs = nil, tag: :div, attrs: {}, &block)
@@ -41,12 +41,20 @@ module Xass
       end
     end
 
-    def ns_root(nss = namespaces)
-      nss.flatten.map(&:to_s).join('__')
+    def ns_root(*names)
+      ns_root!(*(namespaces.flatten + names))
     end
 
-    def ns(name)
-      "#{ns_root}___#{name}"
+    def ns_root!(*names)
+      names.map(&:to_s).join('__')
+    end
+
+    def ns(*names)
+      "#{ns_root(*names[0...-1])}___#{names[-1]}"
+    end
+
+    def ns!(*names)
+      "#{ns_root!(*names[0...-1])}___#{names[-1]}"
     end
 
     private
