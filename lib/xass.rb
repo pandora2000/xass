@@ -48,7 +48,7 @@ module Sass
       end
 
       def doc_to_selector(doc)
-        doc.to_css.split("\n")[0][0...-1].strip.gsub(/\\[0-9]{6}/) do |c|
+        doc.to_css.split("\n")[0][0...-1].strip.gsub(/\\[0-9a-f]{6}/) do |c|
           [c[1..-1].tr('0', '').to_i(16)].pack('U')
         end
       end
