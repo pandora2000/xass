@@ -1,0 +1,20 @@
+<%= dnsr :a do %>
+  <div class="b">
+    <div class="ns-c">
+      <%= nsc :d %>
+      <%= dns :e do %>
+        <div class="ns-f"></div>
+      <% end %>
+      <%= dns! :g do %>
+        <div class="ns-h"></div>
+      <% end %>
+      <%= dnsr! :i do %>
+        <div class="ns-j"></div>
+	<%= nsc :k %>
+	<div class="nsr"></div>
+	<div class="nsrb-l--m"></div>
+	<div class="nsb-n--o"></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
