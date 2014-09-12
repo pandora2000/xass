@@ -25,8 +25,8 @@ module Sass::Tree
         trace_node = Sass::Tree::TraceNode.from_node(node.name, node)
         with_environment(env) {
           trace_node.children = mixin.tree.map {|c|
-            d = c.dup
-            d.filename = node.filename
+            d = c.deep_copy
+            xass_recursive_set_filename(d, node.filename)
             visit(d)
           }.flatten
         }
@@ -41,6 +41,13 @@ module Sass::Tree
     ensure
       @stack.pop unless include_loop
     end
+
+    private
+
+    def xass_recursive_set_filename(node, filename)
+      node.filename = filename
+      node.children.each { |x| xass_recursive_set_filename(x, filename) }
+    end
   end
 
   class RootNode
@@ -50,9 +57,12 @@ module Sass::Tree
       old_render.split('/*').map { |x|
         next x unless x.match(/^ line [0-9]+, /)
         a, b = x.split("\n", 2)
-        m = a.match(/\/app\/assets\/stylesheets\/([^. ]+)\./)
-        next "#{a}\n#{b}" unless m
-        selector = class_replaced_selector(b.split("\n")[0].strip[0...-1].strip, class_prefix(m[1]))
+        m = a.match(/#{Rails.root}\/app\/assets\/stylesheets\/([^. ]+)\./)
+        d = "#{a}\n#{b}"
+        next d unless m
+        p = class_prefix(m[1])
+        next d unless p
+        selector = class_replaced_selector(b.split("\n")[0].strip[0...-1].strip, p)
         "#{a}\n#{selector} {\n#{b.split("\n", 2)[1]}"
       }.join('/*')
     end
@@ -68,7 +78,8 @@ module Sass::Tree
     def class_prefix(name)
       names = name.split('/')
       names = names[1..(names.index { |x| x.start_with?('!') } || -1)]
-      names.join('__')
+      p = names.join('__')
+      p.empty? ? nil : p
     end
 
     def replace_class(doc, class_prefix)
