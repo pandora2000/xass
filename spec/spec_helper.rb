@@ -1,8 +1,21 @@
 require 'bundler/setup'
-Bundler.setup
+Bundler.require
 
-require 'secros'
+require 'xass'
+require 'action_view/railtie'
+require 'haml'
+require 'haml/template/plugin'
 
-def root_path
-  File.expand_path('../..', __FILE__)
+ActionView::Helpers.include(Xass::ViewHelpers)
+
+class View
+  def initialize
+    @action_view = ActionView::Base.new [File.expand_path('../views', __FILE__)]
+  end
+
+  def render(path)
+    @action_view.render(file: path)
+  end
 end
+
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
