@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '>= 0'
   s.add_development_dependency 'rails', '>= 0'
   s.add_development_dependency 'haml', '>= 0'
-  s.add_development_dependency 'nokogiri', '>= 0'
   s.add_runtime_dependency 'activesupport', '~> 4.0'
   s.add_runtime_dependency 'sass', '>= 0'
   s.add_runtime_dependency 'csspool', '>= 0'

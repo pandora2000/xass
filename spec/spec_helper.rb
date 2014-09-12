@@ -4,7 +4,9 @@ Bundler.require
 require 'xass'
 require 'action_view/railtie'
 require 'haml'
+require 'haml/railtie'
 require 'haml/template/plugin'
+require 'nokogiri'
 
 ActionView::Helpers.include(Xass::ViewHelpers)
 

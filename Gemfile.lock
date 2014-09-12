@@ -106,7 +106,6 @@ PLATFORMS
 
 DEPENDENCIES
   haml
-  nokogiri
   rails
   rspec
   xass!

@@ -5,7 +5,7 @@ module Xass
       namespace_stack.push(n)
       res = capture(&block)
       namespace_stack.pop
-      node = Nokogiri::HTML(res)
+      node = Nokogiri::HTML.fragment(res)
       process_namespace_classes(node, n)
       node.to_html.html_safe
     end
