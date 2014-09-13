@@ -37,13 +37,14 @@ This emits the following css.
 }
 ```
 
-In view, use helpers to apply the style.
+In view, use helpers and `ns' prefixed class names to apply the style.
 
 ```haml
 -# /app/views/someview.html.haml
 
 = namespace :hoge, :piyo, :fuga do
-  %div{ class: ns(:hogehoge) }
+  .ns-hogehoge
+  -# or %div{ class: ns(:hogehoge) }
 ```
 
 This emits
@@ -60,7 +61,7 @@ As matter of course, `namespace` can be nested as follows.
 = namespace :hoge do
   = namespace :piyo do
     = namespace :fuga do
-      %div{ class: ns(:hogehoge) }
+      .ns-hogehoge
 ```
 
 ###Example 2
@@ -95,8 +96,9 @@ And,
 -# /app/views/someview.html.haml
 
 = namespace :hoge, :piyo, :fuga do
-  %div{ class: ns_root }
-    %div{ class: ns(:hogehoge) }
+  .nsr
+  -# or %div{ class: ns_root }
+    .ns-hogehoge
 ```
 
 This emits
@@ -113,7 +115,7 @@ Abbreviately, you can write this as follows.
 -# /app/views/someview.html.haml
 
 = namespace_with_root :hoge, :piyo, :fuga do
-  %div{ class: ns(:hogehoge) }
+  .ns-hogehoge
 ```
 
 ###Example 3
@@ -181,4 +183,15 @@ This emits
     foo
   </div>
 </div>
+```
+
+###Abbreviations
+
+The following aliases are available.
+
+```ruby
+alias :dns :namespace
+alias :dns! :namespace!
+alias :dnsr :namespace_with_root
+alias :dnsr! :namespace_with_root!
 ```
