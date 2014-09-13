@@ -29,7 +29,7 @@ gem 'xass'
   width: 100px
 ```
 
-This emits the following css.
+This emits the following css (notice triple underscores before `hogehoge`).
 
 ```css
 .hoge__piyo__fuga___hogehoge {
@@ -73,7 +73,7 @@ If you don't want to dig namespaces, you can specify namespaces directly in `ns`
 
 ###Example 2
 
-You can use `root` class for convenience.
+You can use `root` class for specify a root class name.
 
 ```sass
 // /app/assets/stylesheets/main/hoge/piyo/fuga.sass
