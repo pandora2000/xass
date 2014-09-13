@@ -64,6 +64,13 @@ As matter of course, `namespace` can be nested as follows.
       .ns-hogehoge
 ```
 
+If you don't want to dig namespaces, you can specify namespaces directly in `ns` prefixed class name.
+
+```haml
+= namespace :hoge do
+  .ns-piyo--fuga--hogehoge
+```
+
 ###Example 2
 
 You can use `root` class for convenience.
