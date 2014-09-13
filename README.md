@@ -29,7 +29,7 @@ gem 'xass'
   width: 100px
 ```
 
-This emits the following css (notice triple underscores before `hogehoge`).
+This emits the following css (notice triple underscores before `hogehoge`.)
 
 ```css
 .hoge__piyo__fuga___hogehoge {
