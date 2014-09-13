@@ -37,7 +37,7 @@ This emits the following css.
 }
 ```
 
-In view, use helpers and `ns' prefixed class names to apply the style.
+In view, use helpers and `ns` prefixed class names to apply the style.
 
 ```haml
 -# /app/views/someview.html.haml
