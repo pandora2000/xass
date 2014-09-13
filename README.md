@@ -18,7 +18,7 @@ gem 'xass'
 
 ##USAGE
 
-###Example 1
+###Namespacing by directory tree
 
 ```sass
 // /app/assets/stylesheets/application.sass
@@ -33,7 +33,7 @@ gem 'xass'
   width: 100px
 ```
 
-This emits the following css (notice triple underscores before `hogehoge`.)
+This emits the following css (notice that there are three underscores before `hogehoge`.)
 
 ```css
 .hoge__piyo__fuga___hogehoge {
@@ -41,7 +41,7 @@ This emits the following css (notice triple underscores before `hogehoge`.)
 }
 ```
 
-In view, use helpers and `ns` prefixed class names to apply the style.
+In view, use helpers or `ns` prefixed class names to apply the style.
 
 ```haml
 -# /app/views/someview.html.haml
@@ -75,7 +75,7 @@ If you don't want to dig namespaces, you can specify namespaces directly in `ns`
   .ns-piyo--fuga--hogehoge
 ```
 
-###Example 2
+###Special class name `root`
 
 You can use `root` class for specify a root class name.
 
@@ -84,9 +84,6 @@ You can use `root` class for specify a root class name.
 
 .root
   width: 10px
-
-.hogehoge
-  width: 100px
 ```
 
 This emits
@@ -94,10 +91,6 @@ This emits
 ```css
 .hoge__piyo__fuga {
   width: 10px;
-}
-
-.hoge__piyo__fuga___hogehoge {
-  width: 100px;
 }
 ```
 
@@ -108,16 +101,13 @@ And,
 
 = namespace :hoge, :piyo, :fuga do
   .nsr
-  -# or %div{ class: ns_root }
-    .ns-hogehoge
+  -# or %div{ class: nsr }
 ```
 
 This emits
 
 ```html
-<div class="hoge__piyo__fuga">
-  <div class="hoge__piyo__fuga___hogehoge"></div>
-</div>
+<div class="hoge__piyo__fuga"></div>
 ```
 
 Abbreviately, you can write this as follows.
@@ -125,11 +115,10 @@ Abbreviately, you can write this as follows.
 ```haml
 -# /app/views/someview.html.haml
 
-= namespace_with_root :hoge, :piyo, :fuga do
-  .ns-hogehoge
+= namespace_with_root :hoge, :piyo, :fuga
 ```
 
-###Example 3
+###Disable namespacing
 
 You can use `_` prefix to disable namespacing.
 
@@ -142,12 +131,6 @@ You can use `_` prefix to disable namespacing.
 ```sass
 // /app/assets/stylesheets/main/hoge/piyo/fuga.sass
 
-.root
-  width: 10px
-
-.hogehoge
-  width: 100px
-
 ._current
   background-color: black
 ```
@@ -155,20 +138,12 @@ You can use `_` prefix to disable namespacing.
 This emits the following css.
 
 ```css
-.hoge__piyo__fuga {
-  width: 10px;
-}
-
-.hoge__piyo__fuga___hogehoge {
-  width: 100px;
-}
-
 .current {
   background-color: black;
 }
 ```
 
-###Example 4
+###Reset current namespace
 
 In partial, you may want to reset current namespace. `namespace!` and `namespace_with_root!` do this.
 
@@ -180,7 +155,7 @@ In partial, you may want to reset current namespace. `namespace!` and `namespace
 ```
 
 ```haml
--# /app/views/partial.html.haml
+-# /app/views/_partial.html.haml
 
 = namespace_with_root! :foo do
   foo
