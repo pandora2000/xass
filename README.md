@@ -4,7 +4,10 @@ Xass extends Rails with namespacing CSS classes in Sass.
 
 ##SUPPORT
 
-Currently supported sass version is 3.2.19
+|Xass version|Supported Sass version|
+|:-:|:-:|
+|0.2.0|3.2.19|
+|0.3.0|3.4.7|
 
 ##INSTALLATION
 
