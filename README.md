@@ -6,8 +6,8 @@ Xass extends Rails with namespacing CSS classes in Sass.
 
 |Xass version|Supported Sass version|
 |:-:|:-:|
-|0.2.0|3.2.19|
 |0.3.0|3.4.7|
+|0.2.0|3.2.19|
 
 ##INSTALLATION
 
