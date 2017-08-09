@@ -1,27 +1,27 @@
-##DESCRIPTION
+## DESCRIPTION
 
 Xass extends Rails with namespacing CSS classes in Sass.
 
-##SUPPORT
+## SUPPORT
 
 |Xass version|Supported Sass version|
 |:-:|:-:|
 |0.3.0|3.4.7~3.4.10|
 |0.2.0|3.2.19|
 
-##INSTALLATION
+## INSTALLATION
 
 We suppose you use Rails with sass-rails.
 
-###Gemfile
+### Gemfile
 
 ```rb
 gem 'xass'
 ```
 
-##USAGE
+## USAGE
 
-###Namespacing by directory tree
+### Namespacing by directory tree
 
 ```sass
 // /app/assets/stylesheets/application.sass
@@ -78,7 +78,7 @@ If you don't want to dig namespaces, you can specify namespaces directly in `ns`
   .ns-piyo--fuga--hogehoge
 ```
 
-###Special class name `root`
+### Special class name `root`
 
 You can use `root` class for specify a root class name.
 
@@ -121,7 +121,7 @@ Abbreviately, you can write this as follows.
 = namespace_with_root :hoge, :piyo, :fuga
 ```
 
-###Disable namespacing
+### Disable namespacing
 
 You can use `_` prefix to disable namespacing.
 
@@ -146,7 +146,7 @@ This emits the following css.
 }
 ```
 
-###Reset current namespace
+### Reset current namespace
 
 In partial, you may want to reset current namespace. `namespace!` and `namespace_with_root!` do this.
 
@@ -174,7 +174,7 @@ This emits
 </div>
 ```
 
-###Abbreviations
+### Abbreviations
 
 The following aliases are available.
 
